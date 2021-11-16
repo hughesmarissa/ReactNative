@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import { CAMPSITES, Campsites } from '../shared/campsites';
+import { CAMPSITES } from '../shared/campsites';
 
 class Directory extends Component {
 
@@ -11,8 +11,10 @@ class Directory extends Component {
       campsites: CAMPSITES
     };
   }
+
   static navigationOptions = {
     title: 'Directory'
+    
   }
 
   render() {
