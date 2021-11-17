@@ -9,16 +9,16 @@ import { createAppContainer } from 'react-navigation';
 import {createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
-import { Icon, withTheme } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
-import { fetchCampsites, fetchPromotions, fetchPartners, fetchComments } from '../redux/ActionCreators';
+import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners } from '../redux/ActionCreators';
 
-const mapDispatchToProps = {    
-        fetchCampsites, 
-        fetchPromotions,
-        fetchPartners,
-        fetchComments
+const mapDispatchToProps = {
+    fetchCampsites,
+    fetchComments,
+    fetchPromotions,
+    fetchPartners
 };
 
 
@@ -214,8 +214,8 @@ class Main extends Component {
     componentDidMount() {
         this.props.fetchCampsites();
         this.props.fetchComments();
-        this.props.fetchPartners();
         this.props.fetchPromotions();
+        this.props.fetchPartners();
     }
 
     render() {

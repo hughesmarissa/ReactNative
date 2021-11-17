@@ -19,7 +19,7 @@ export const campsites = (state = {
                     ...state,
                     isLoading: true, 
                     errMess: null,
-                    campsites: action.payload
+                    campsites: []
                 };
             case ActionTypes.CAMPSITES_FAILED:
                 return {

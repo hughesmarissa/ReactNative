@@ -3,7 +3,7 @@ import * as ActionTypes from './ActionTypes';
 export const partners = (state = {
     isLoading: true,
     errMess: null,
-    parftners: []},
+    partners: []},
     action) => {
         
         switch (action.type) {
@@ -14,7 +14,7 @@ export const partners = (state = {
                     errMess: null,
                     partners: action.payload
                 };
-            case ActionTypes.PARTNER_LOADING:
+            case ActionTypes.PARTNERS_LOADING:
                 return {
                     ...state,
                     isLoading: true,

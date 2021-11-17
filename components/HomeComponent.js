@@ -7,8 +7,8 @@ import { baseUrl } from '../shared/baseUrl';
 
 const mapStateToProps = state => {
     return {
-        campsites: state.campsites, 
-        promotion: state.promotions,
+        campsites: state.campsites,
+        promotions: state.promotions,
         partners: state.partners
     };
 };
@@ -38,13 +38,13 @@ class Home extends Component {
     render() {
         return (
             <ScrollView>
-                <RenderItem 
+                <RenderItem
                     item={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
                 />
-                <RenderItem 
+                <RenderItem
                     item={this.props.promotions.promotions.filter(promotion => promotion.featured)[0]}
                 />
-                <RenderItem 
+                <RenderItem
                     item={this.props.partners.partners.filter(partner => partner.featured)[0]}
                 />
             </ScrollView>

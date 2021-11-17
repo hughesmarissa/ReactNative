@@ -7,7 +7,7 @@ import { baseUrl } from '../shared/baseUrl';
 
 const mapStateToProps = state => {
     return {
-        campsites: state.campsites 
+        campsites: state.campsites
     };
 };
 
@@ -21,16 +21,16 @@ class Directory extends Component {
     render() {
         const { navigate } = this.props.navigation;
         const renderDirectoryItem = ({item}) => {
-        return (
-            <Tile
-            title={item.name}
-            caption={item.description}
-            featured
-            onPress={() => navigate('CampsiteInfo', { campsiteId: item.id})}
-            imageSrc={{uri: baseUrl + item.image}}
-            />  
-        );
-    };
+            return (
+                <Tile
+                    title={item.name}
+                    caption={item.description}
+                    featured
+                    onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
+                    imageSrc={{uri: baseUrl + item.image}}
+                />
+            );
+        };
 
     return (
         <FlatList

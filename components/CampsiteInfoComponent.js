@@ -63,35 +63,35 @@ function RenderCampsite(props) {
 }
 
 class CampsiteInfo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      favorite: false
-    };
-  }
-    
-  static navigationOptions = {
-    title: 'Campsite Information'
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+        favorite: false
+        };
+    }
+        
+    static navigationOptions = {
+        title: 'Campsite Information'
+    }
 
-  markFavorite() {
-    this.setState({favorite: true});
-  }
+    markFavorite() {
+        this.setState({favorite: true});
+    }
 
-  render() {
-    const campsiteId = this.props.navigation.getParam('campsiteId');
-    const campsite = this.props.campsites.campsites.filter(campsite => campsite.id === campsiteId)[0];
-    const comments = this.props.comments.comments.filter(comment => comment.campsiteId === campsiteId);
+    render() {
+        const campsiteId = this.props.navigation.getParam('campsiteId');
+        const campsite = this.props.campsites.campsites.filter(campsite => campsite.id === campsiteId)[0];
+        const comments = this.props.comments.comments.filter(comment => comment.campsiteId === campsiteId);
         return (
             <ScrollView>
-                <RenderCampsite campsite={campsite} 
-                  favorite={this.state.favorite}
-                  markFavorite={() => this.markFavorite()}
+                <RenderCampsite campsite={campsite}
+                    favorite={this.state.favorite}
+                    markFavorite={() => this.markFavorite()}
                 />
                 <RenderComments comments={comments} />
             </ScrollView>
-        );
-  }
+            );
+    }
 }
 
 export default connect(mapStateToProps)(CampsiteInfo);
