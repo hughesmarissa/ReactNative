@@ -5,14 +5,14 @@ export const favorites = (
     action
     ) => {
         
-        switch (action.type) {
-            case ActionTypes.ADD_FAVORITE:
-                if (state.includes(action.payload)) {
-                    return state;
-                }
-                return state.concat(action.payload);
-
-            default: 
+    switch (action.type) {
+        case ActionTypes.ADD_FAVORITE:
+            if (state.includes(action.payload)) {
                 return state;
-        }
+            }
+            return state.concat(action.payload);
+
+        default:
+            return state;
+    }
 };
