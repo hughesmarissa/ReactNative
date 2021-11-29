@@ -53,16 +53,16 @@ function RenderComments({comments}) {
 function RenderCampsite(props) {
 
     const {campsite} = props;
-
     const view = React.createRef();
 
     const recognizeDrag = ({dx}) => (dx < -200) ? true : false;
+    const recognizeComment = ({dx}) => (dx > 200 ) ? true: false;
 
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => true,
         onPanResponderGrant: () => {
             view.current.rubberBand(1000)
-            .then(endState => console.log(endState.finished ? 'finished' : 'canceled'));
+            .then(endState => console.log(endState.finished ? 'finished': 'canceled'));
         },
         onPanResponderEnd: (e, gestureState) => {
             console.log('pan responder end', gestureState);
@@ -79,13 +79,16 @@ function RenderCampsite(props) {
                         {
                             text: 'OK',
                             onPress: () => props.favorite ?
-                                console.log('Already set as a favorite') : props.markFavorite()
+                            console.log('Already set as a favorite') : props.markFavorite()
                         }
                     ],
                     { cancelable: false }
                 );
             }
-            return true;
+            else if (recognizeComment(gestureState))
+            {
+                props.onShowModal()
+            }
         }
     });
 
@@ -166,7 +169,6 @@ class CampsiteInfo extends Component {
             rating: 5,
             author: '',
             text: '',
-            showModal: false 
         });
     }
 
@@ -214,7 +216,6 @@ class CampsiteInfo extends Component {
                             }}
                             leftIconContainerStyle={{ paddingRight: 10 }}
                             onChangeText={text => this.setState({text: text})} 
-                            //^^^^^careful with labels!! not labeled as 'comments'^^^^^
                             value
                         />
                         <View>
@@ -254,8 +255,8 @@ const styles = StyleSheet.create ({
     },
     modal: {
         justifyContent: 'center',
-        margin: 20,
-    },
+        margin: 20
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CampsiteInfo);
