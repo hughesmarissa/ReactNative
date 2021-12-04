@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, Image } from 'react-native';
 import { Input, Button, CheckBox, Icon } from 'react-native-elements';
 import * as ImageManipulator  from 'expo-image-manipulator';
+import * as MediaLibrary from 'expo-media-library';
 import * as SecureStore from 'expo-secure-store';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
@@ -184,11 +185,13 @@ class RegisterTab extends Component {
         console.log(typeof imgUri);
         console.log(imgUri);
         const processedImage = await ImageManipulator.manipulateAsync(
-          imgUri, [{resize: {width: 400}}], { compress: 1, format: ImageManipulator.SaveFormat.PNG }
+          imgUri, 
+          [{resize: {width: 400}}], 
+          { compress: 1, format: ImageManipulator.SaveFormat.PNG }
         );
         console.log(processedImage);
         this.setState({imageUrl: processedImage.uri});
-      }
+    }
 
     handleRegister() {
         console.log(JSON.stringify(this.state));

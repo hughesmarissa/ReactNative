@@ -12,7 +12,7 @@ import SafeAreaView from 'react-native-safe-area-view';
 import { View, Platform, StyleSheet, Text, ScrollView, Image, Alert, ToastAndroid } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import {createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
+import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners } from '../redux/ActionCreators';
